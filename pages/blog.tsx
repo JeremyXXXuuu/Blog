@@ -14,7 +14,7 @@ interface BlogItem {
   created_date: string;
 }
 
-export default function Home({ blogs }: Props) {
+export default function Blog({ blogs }: Props) {
   console.log(blogs);
   return (
     <div className={styles.container}>
