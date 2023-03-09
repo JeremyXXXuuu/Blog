@@ -59,33 +59,45 @@ const renderBlock = (block: Block): ReactElement => {
   switch (block.type) {
     case "heading_1":
       // For a heading
-      return <h1>{block["heading_1"].text[0].plain_text} </h1>;
+      return (
+        <h1 className="text-3xl">{block["heading_1"].text[0].plain_text} </h1>
+      );
     case "heading_2":
       // For a heading
-      return <h2>{block["heading_2"].text[0].plain_text} </h2>;
+      return (
+        <h2 className="text-2xl">{block["heading_2"].text[0].plain_text} </h2>
+      );
     case "heading_3":
       // For a heading
-      return <h3>{block["heading_3"].text[0].plain_text} </h3>;
+      return (
+        <h3 className="text-xl">{block["heading_3"].text[0].plain_text} </h3>
+      );
     case "image":
       // For an image
       return (
-        <Image
-          src={block["image"].file.url}
-          width={650}
-          height={400}
-          alt={"block img"}
-        />
+        <div className="h-auto max-w-ful shadow-2xl ">
+          <Image
+            src={block["image"].file.url}
+            width={500}
+            height={300}
+            alt={"block img"}
+          />
+        </div>
       );
     case "bulleted_list_item":
       // For an unordered list
       return (
-        <ul>
-          <li>{block["bulleted_list_item"].text[0].plain_text} </li>
-        </ul>
+        <li className="text-base m-4 ml-8">
+          {block["bulleted_list_item"].text[0].plain_text}{" "}
+        </li>
       );
     case "paragraph":
       // For a paragraph
-      return <p>{block["paragraph"].text[0]?.text?.content} </p>;
+      return (
+        <p className="text-base m-4">
+          {block["paragraph"].text[0]?.text?.content}{" "}
+        </p>
+      );
     case "code":
       return (
         <pre>
@@ -104,15 +116,27 @@ const Post: NextPage<Props> = ({ id, blog, blocks }) => {
       <Head>
         <title>{blog.properties.Name.rich_text[0].plain_text}</title>
       </Head>
-      <Image src={blog.cover.external.url} width={500} height={300} alt={""} />
-      <div>{blog.properties.Name.rich_text[0].plain_text}</div>
-      {blocks.map((block, index) => {
-        return (
-          <div key={index} className={styles.blogPageContent}>
-            {renderBlock(block)}
-          </div>
-        );
-      })}
+      <div className=" max-w-4xl">
+        <div className="flex justify-center h-60 mb-6">
+          <Image
+            className="object-cover max-w-ful shadow-2xl rounded-lg"
+            src={blog.cover.external.url}
+            width={600}
+            height={300}
+            alt={""}
+          />
+        </div>
+        <div className="flex text-3xl font-semibold justify-center">
+          {blog.properties.Name.rich_text[0].plain_text}
+        </div>
+        {blocks.map((block, index) => {
+          return (
+            <div key={index} className={styles.blogPageContent}>
+              {renderBlock(block)}
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

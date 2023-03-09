@@ -4,68 +4,18 @@ import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { blogs } from "../lib/notion";
 
-interface Props {
-  blogs: [any];
-}
-
-interface BlogItem {
-  name: string;
-  img: string;
-  created_date: string;
-}
-
-export default function Home({ blogs }: Props) {
-  console.log(blogs);
+export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Latest posts</title>
-      </Head>
-
-      <main className={styles.main}>
-        {blogs
-          .filter(
-            (blog) =>
-              blog.cover != null && blog.properties.Published.checkbox === true
-          )
-          .map((blog, index) => {
-            const blogItem: BlogItem = {
-              name: blog.properties.Name.rich_text[0].plain_text,
-              img: blog.cover.external.url,
-              created_date: blog.properties.Date.created_time,
-            };
-
-            // console.log(JSON.stringify(blog));
-            return (
-              <div className={styles.cardHolder} key={index}>
-                <Link href={`/blog/${blog.id}`}>
-                  <Image src={blogItem.img} width={300} height={200} alt={""} />
-                </Link>
-                <div>
-                  <div className={styles.cardContent}>
-                    <Link href={`/blog/${blog.id}`}>{blogItem.name}</Link>
-                  </div>
-                  <p>{blogItem.created_date}</p>
-                </div>
-              </div>
-            );
-          })}
-      </main>
-
-      <footer className={styles.footer}>
-        <p>Blog application</p>
-      </footer>
+    <div className="m-5 w-3/4">
+      <h1 className="text-4xl">Hey, Jeremy here</h1>
+      <p className="text-lg mt-5 mb-5">
+        I'm a software engineer that focuses on turning ideas into fantastic
+        products. I share something I known through articles and the Telegram
+        channel.
+      </p>
+      <p className="text-lg">
+        I'm still a bodybuilder, preparing for my first competition
+      </p>
     </div>
   );
-}
-
-export async function getServerSideProps() {
-  // Get the posts
-  let { results } = await blogs();
-  // Return the blog
-  return {
-    props: {
-      blogs: results,
-    },
-  };
 }

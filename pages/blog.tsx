@@ -1,6 +1,5 @@
 import Head from "next/head";
 import Image from "next/image";
-import styles from "../styles/Home.module.css";
 import Link from "next/link";
 import { blogs } from "../lib/notion";
 
@@ -15,14 +14,13 @@ interface BlogItem {
 }
 
 export default function Blog({ blogs }: Props) {
-  console.log(blogs);
   return (
-    <div className={styles.container}>
+    <div>
       <Head>
         <title>Latest posts</title>
       </Head>
 
-      <main className={styles.main}>
+      <main className="w-auto mt-4 ">
         {blogs
           .filter(
             (blog) =>
@@ -37,24 +35,31 @@ export default function Blog({ blogs }: Props) {
 
             // console.log(JSON.stringify(blog));
             return (
-              <div className={styles.cardHolder} key={index}>
-                <Link href={`/blog/${blog.id}`}>
-                  <Image src={blogItem.img} width={300} height={200} alt={""} />
-                </Link>
-                <div>
-                  <div className={styles.cardContent}>
-                    <Link href={`/blog/${blog.id}`}>{blogItem.name}</Link>
+              <Link href={`/blog/${blog.id}`}>
+                <div
+                  key={index}
+                  className=" flex items-center overflow-hidden bg-white border border-gray-200 rounded-lg shadow max-w-3xl ml-6 mb-6 h-36"
+                >
+                  <Image
+                    src={blogItem.img}
+                    width={400}
+                    height={400}
+                    alt={""}
+                    className="object-cover rounded-t-lg w-72 "
+                  />
+                  <div className="flex flex-col justify-between ml-6 p-4 leading-normal">
+                    <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                      <span>{blogItem.name}</span>
+                    </div>
+                    <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                      {blogItem.created_date}
+                    </p>
                   </div>
-                  <p>{blogItem.created_date}</p>
                 </div>
-              </div>
+              </Link>
             );
           })}
       </main>
-
-      <footer className={styles.footer}>
-        <p>Blog application</p>
-      </footer>
     </div>
   );
 }

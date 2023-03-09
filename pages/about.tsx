@@ -8,12 +8,10 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <section>
-      <h1 className="font-bold text-3xl font-serif">About Me</h1>
-      <p className="my-5 text-neutral-800 dark:text-neutral-200">
-        Hey, I'm Jeremy.
-      </p>
-      <div className="prose prose-neutral dark:prose-invert text-neutral-800 dark:text-neutral-200">
+    <section className="m-5 w-3/4">
+      <h1 className="text-4xl">About Me</h1>
+      <p className="text-lg mt-5 mb-3">Hey, I'm Jeremy.</p>
+      <div className="text-lg">
         <p>
           I'm currently the <b>Fullstack Developer</b> at Orosound, I focus on{" "}
           <b>developing Fullstack web application</b> and <b>Oauth2</b>
@@ -30,31 +28,29 @@ export default function AboutPage() {
           is incredible. Anyone can become a developer, writer, or creator – and
           no one has to ask for permission. You can just build.
         </p>
-        <p className="mb-8">Outside of Orosound, I ...</p>
-        <div className="flex flex-col gap-2 md:flex-row md:gap-2">
+        <p className="">Outside of Orosound, I ...</p>
+        <div className="flex justify-start mt-5">
           <a
             rel="noopener noreferrer"
             target="_blank"
             href="https://twitter.com/leeerob"
-            className="flex w-full border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
+            className="mr-10"
           >
-            <div className="flex items-center">
+            <div className="">
               <TwitterIcon />
-              <div className="ml-3">Twitter</div>
+              <div className="text-sm font-semibold mt-1">Twitter</div>
             </div>
-            <ArrowIcon />
           </a>
           <a
             rel="noopener noreferrer"
             target="_blank"
-            href="https://github.com/leerob"
-            className="flex w-full border border-neutral-200 dark:border-neutral-800 rounded-lg p-4 no-underline items-center text-neutral-800 dark:text-neutral-200 hover:dark:bg-neutral-900 hover:bg-neutral-100 transition-all justify-between"
+            href="https://github.com/jeremyxxxuuu"
+            className=""
           >
-            <div className="flex items-center">
+            <div className="">
               <GitHubIcon />
-              <div className="ml-3">GitHub</div>
+              <div className="text-sm font-semibold">GitHub</div>
             </div>
-            <ArrowIcon />
           </a>
         </div>
       </div>
