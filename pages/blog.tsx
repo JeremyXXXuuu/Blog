@@ -35,9 +35,9 @@ export default function Blog({ blogs }: Props) {
 
             // console.log(JSON.stringify(blog));
             return (
-              <Link href={`/blog/${blog.id}`}>
+              <Link href={`/blog/${blog.id}`} key={index} passHref>
                 <div
-                  key={index}
+                  
                   className=" flex items-center overflow-hidden bg-white border border-gray-200 rounded-lg shadow max-w-3xl ml-6 mb-6 h-36"
                 >
                   <Image

@@ -131,7 +131,7 @@ const Post: NextPage<Props> = ({ id, blog, blocks }) => {
         </div>
         {blocks.map((block, index) => {
           return (
-            <div key={index} className={styles.blogPageContent}>
+            <div key={index} className="mt-2">
               {renderBlock(block)}
             </div>
           );
