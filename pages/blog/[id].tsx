@@ -140,19 +140,27 @@ const Post: NextPage<Props> = ({ id, blog, blocks }) => {
     </div>
   );
 };
+
 export const getStaticPaths: GetStaticPaths = async () => {
   let { results } = await blogs();
   // Get all posts
   return {
-    paths: results.map((blog) => {
-      // Go through every post
-      return {
-        params: {
-          // set a params object with an id in it
-          id: blog.id,
-        },
-      };
-    }),
+    paths: results
+      .filter(
+        (blog: any) =>
+          blog.cover != null &&
+          blog.properties.Published.checkbox === true &&
+          blog.properties.Name.rich_text[0] != null
+      )
+      .map((blog) => {
+        // Go through every post
+        return {
+          params: {
+            // set a params object with an id in it
+            id: blog.id,
+          },
+        };
+      }),
     fallback: false,
   };
 };
@@ -161,7 +169,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   let { id } = ctx.params as IParams;
   // Get the dynamic id
   let page_result = await blog(id);
-  console.log(page_result);
   // Fetch the post
   let { results } = await blocks(id);
   // Get the children

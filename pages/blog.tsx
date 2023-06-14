@@ -32,8 +32,6 @@ export default function Blog({ blogs }: Props) {
               img: blog.cover.external.url,
               created_date: blog.properties.Date.created_time,
             };
-
-            // console.log(JSON.stringify(blog));
             return (
               <Link href={`/blog/${blog.id}`} key={index} passHref>
                 <div
