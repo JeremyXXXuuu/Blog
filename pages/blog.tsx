@@ -24,7 +24,7 @@ export default function Blog({ blogs }: Props) {
         {blogs
           .filter(
             (blog) =>
-              blog.cover != null && blog.properties.Published.checkbox === true
+              blog.cover != null && blog.properties.Published.checkbox === true && blog.properties.Name.rich_text[0] != null
           )
           .map((blog, index) => {
             const blogItem: BlogItem = {
