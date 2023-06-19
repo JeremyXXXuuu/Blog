@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { blogs } from "../lib/notion";
+import { blogs } from "../../lib/notion";
 
 interface Props {
   blogs: [any];
@@ -13,7 +13,8 @@ interface BlogItem {
   created_date: string;
 }
 
-export default function Blog({ blogs }: Props) {
+export default async function Blog() {
+  const blogs = await getBlogs() as any;
   return (
     <div>
       <Head>
@@ -23,17 +24,17 @@ export default function Blog({ blogs }: Props) {
       <main className="w-auto mt-4 ">
         {blogs
           .filter(
-            (blog) =>
+            (blog: any) =>
               blog.cover != null && blog.properties.Published.checkbox === true && blog.properties.Name.rich_text[0] != null
           )
-          .map((blog, index) => {
+          .map((blog: any, index: number) => {
             const blogItem: BlogItem = {
               name: blog.properties.Name.rich_text[0].plain_text,
               img: blog.cover.external.url,
               created_date: blog.properties.Date.created_time,
             };
             return (
-              <Link href={`/blog/${blog.id}`} key={index} passHref>
+              <Link href={`/posts/${blog.id}`} key={index} passHref>
                 <div
                   
                   className=" flex items-center overflow-hidden bg-white border border-gray-200 rounded-lg shadow max-w-3xl ml-6 mb-6 h-36"
@@ -62,13 +63,10 @@ export default function Blog({ blogs }: Props) {
   );
 }
 
-export async function getServerSideProps() {
+async function getBlogs() {
   // Get the posts
   let { results } = await blogs();
   // Return the blog
-  return {
-    props: {
-      blogs: results,
-    },
-  };
+  return results;
 }
+

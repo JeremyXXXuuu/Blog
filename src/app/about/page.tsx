@@ -1,5 +1,5 @@
 // import type { Metadata } from "next";
-import { GitHubIcon, ArrowIcon, TwitterIcon } from "../components/icons";
+import { GitHubIcon, ArrowIcon, TwitterIcon } from "../../components/icons";
 
 export const metadata = {
   title: "About",

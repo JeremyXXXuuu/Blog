@@ -1,11 +1,10 @@
-import { GetStaticProps, NextPage, GetStaticPaths } from "next";
+"use client";
+
 import Image from "next/image";
 import Head from "next/head";
-import Link from "next/link";
 import { ParsedUrlQuery } from "querystring";
-import { blog, blogs, blocks } from "../../lib/notion";
-import styles from "../../styles/Home.module.css";
-import { ReactElement } from "react";
+import { blog, blogs, blocks } from "../../../lib/notion";
+import { Key, ReactElement } from "react";
 
 interface IParams extends ParsedUrlQuery {
   id: string;
@@ -110,9 +109,11 @@ const renderBlock = (block: Block): ReactElement => {
   }
 };
 
-const Post: NextPage<Props> = ({ id, blog, blocks }) => {
+const Post = async ({params}:{params: IParams} ) => {
+  console.log(params);
+  const { id, blog, blocks }: {id: string, blog : any, blocks :any} = await getPost(params);
   return (
-    <div className={styles.blogPageHolder}>
+    <div>
       <Head>
         <title>{blog.properties.Name.rich_text[0].plain_text}</title>
       </Head>
@@ -129,7 +130,7 @@ const Post: NextPage<Props> = ({ id, blog, blocks }) => {
         <div className="flex text-3xl font-semibold justify-center">
           {blog.properties.Name.rich_text[0].plain_text}
         </div>
-        {blocks.map((block, index) => {
+        {blocks.map((block: Block, index: Key | null | undefined) => {
           return (
             <div key={index} className="mt-2">
               {renderBlock(block)}
@@ -141,7 +142,8 @@ const Post: NextPage<Props> = ({ id, blog, blocks }) => {
   );
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
+
+export async function generateStaticParams() {
   let { results } = await blogs();
   // Get all posts
   return {
@@ -155,30 +157,25 @@ export const getStaticPaths: GetStaticPaths = async () => {
       .map((blog) => {
         // Go through every post
         return {
-          params: {
-            // set a params object with an id in it
             id: blog.id,
-          },
         };
       }),
-    fallback: false,
   };
-};
+}
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
-  let { id } = ctx.params as IParams;
+
+async function getPost(params: IParams) {
+  let { id } = params as IParams;
   // Get the dynamic id
   let page_result = await blog(id);
   // Fetch the post
   let { results } = await blocks(id);
   // Get the children
   return {
-    props: {
       id,
       blog: page_result,
       blocks: results,
-    },
   };
-};
+}
 
 export default Post;
