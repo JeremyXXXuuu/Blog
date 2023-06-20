@@ -1,3 +1,4 @@
+// eslint-disable-next-line @next/next/no-document-import-in-page
 import { Html, Head, Main, NextScript } from 'next/document'
 
 /*_document to set lang, load fonts, load scripts before page interactivity, 
@@ -12,4 +13,4 @@ export default function Document() {
       </body>
     </Html>
   )
-}
+};
