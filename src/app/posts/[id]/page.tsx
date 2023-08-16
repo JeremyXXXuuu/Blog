@@ -89,14 +89,18 @@ const renderBlock = (block: Block): ReactElement => {
       // For a paragraph
       if(block["paragraph"].rich_text.length){
         const text = block["paragraph"].rich_text;
-        const {content, className} = parseRichText(text, "text-base m-4 ")
-        console.log({content, className})
+        const p = parseRichText(text, "text-base m-4 ")
         return (
-          <p className= {className}>
-            {content}{" "}
-          </p>
-        );
+            <div>
+              {p.map(({content, className}, index) => {
+                return (
+                  <p key={index} className={className}>{content}</p>
+                )
+              })}
+            </div>
+        )
       }
+      
     case "code":
       // For a code block
       if(block["code"] && block["code"].rich_text.length) {
