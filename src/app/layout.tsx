@@ -16,11 +16,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-    <div className="min-h-screen min-w-full grid grid-cols-4 gap-6">
-      <div className="col-span-1 justify-self-end mt-12">
+    <div className="h-screen w-full grid grid-cols-4 gap-6 overflow-auto">
+      <div className="justify-self-end ol-span-1 mt-12">
         <Navbar />
       </div>
-      <div className="col-span-3 mt-12 ml-6 ">{children}</div>
+      <div className="col-span-3 mt-12 ml-6 overflow-auto">{children}</div>
     </div>
     </html>
   )
