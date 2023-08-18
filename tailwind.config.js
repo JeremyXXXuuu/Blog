@@ -9,6 +9,7 @@ Use comma separate values between {} to match against a list of options */
     "./components/**/*.{js,ts,jsx,tsx}",
       // Or if using `src` directory:
       "./src/**/*.{js,ts,jsx,tsx,mdx}",],
+  darkMode: 'class',
   theme: {
     extend: {},
   },
