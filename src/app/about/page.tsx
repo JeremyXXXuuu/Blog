@@ -8,13 +8,13 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <section className="m-5 w-3/4">
-      <h1 className="text-4xl">About Me</h1>
+    <section className="m-auto w-3/4">
+      <h1 className="text-4xl text-black dark:text-blue-400">About Me</h1>
       <p className="text-lg mt-5 mb-3">Hey, I&rsquo;m Jeremy.</p>
       <div className="text-lg">
         <p>
           I&rsquo;m currently the <b>Fullstack Developer</b> at Orosound, I focus on{" "}
-          <b>developing Fullstack web application</b> and <b>Oauth2</b>
+          <b>developing Fullstack web application</b>, Electron application and <b>Oauth2</b>
         </p>
         <hr />
         <p>

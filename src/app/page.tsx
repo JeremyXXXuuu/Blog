@@ -1,6 +1,6 @@
 export default function Home() {
   return (
-    <div className="m-5 w-3/4">
+    <div className="m-auto w-3/4">
       <h1 className="text-4xl">Hey, Jeremy here</h1>
       <p className="text-lg mt-5 mb-5">
         I&rsquo;m a software engineer that focuses on turning ideas into fantastic

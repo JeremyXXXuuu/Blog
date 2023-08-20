@@ -21,7 +21,7 @@ export default async function Blog() {
         <title>Latest posts</title>
       </Head>
 
-      <main className="w-auto mt-4 ">
+      <main className="w-auto mr-5">
         {blogs
           .filter(
             (blog: any) =>
@@ -36,18 +36,17 @@ export default async function Blog() {
             return (
               <Link href={`/posts/${blog.id}`} key={index} passHref>
                 <div
-                  
-                  className=" flex items-center overflow-hidden bg-white border border-gray-200 rounded-lg shadow max-w-3xl ml-6 mb-6 h-36"
+                  className="flex items-center overflow-hidden md:flex-row bg-white border border-gray-200 rounded-lg shadow max-w-3xl ml-6 mb-6 h-36"
                 >
                   <Image
                     src={blogItem.img}
                     width={400}
                     height={400}
                     alt={""}
-                    className="object-cover rounded-t-lg w-72 "
+                    className="object-cover rounded-t-lg w-36 md:w-72 "
                   />
-                  <div className="flex flex-col justify-between ml-6 p-4 leading-normal">
-                    <div className="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+                  <div className="flex flex-col justify-between ml-2 md:ml-6 p-4 leading-normal">
+                    <div className="text-l md:mb-2 text-2xl font-bold tracking-tight text-gray-900">
                       <span>{blogItem.name}</span>
                     </div>
                     <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
