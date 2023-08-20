@@ -1,4 +1,6 @@
-import { Client } from "@notionhq/client";
+import { Client} from "@notionhq/client";
+
+import { GetPageResponse } from "@notionhq/client/build/src/api-endpoints";
 
 const client = new Client({
   auth: process.env.NOTION_API_KEY,
@@ -15,7 +17,7 @@ async function blog(id: string) {
   const blog = await client.pages.retrieve({
     page_id: id,
   });
-  return blog;
+  return blog as GetPageResponse;
 }
 
 async function blockRetrieve(id: string) {
