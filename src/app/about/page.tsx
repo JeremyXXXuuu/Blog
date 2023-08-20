@@ -1,5 +1,5 @@
 // import type { Metadata } from "next";
-import { GitHubIcon, ArrowIcon, TwitterIcon } from "../../components/icons";
+import { GitHubIcon, LinkedInIcon } from "../../components/icons";
 
 export const metadata = {
   title: "About",
@@ -13,15 +13,21 @@ export default function AboutPage() {
       <p className="text-lg mt-5 mb-3">Hey, I&rsquo;m Jeremy.</p>
       <div className="text-lg">
         <p>
-          I&rsquo;m currently the <b>Fullstack Developer</b> at Orosound, I focus on{" "}
-          <b>developing Fullstack web application</b>, Electron application and <b>Oauth2</b>
+          I&rsquo;m currently the <b>Fullstack Developer</b> at Orosound, I
+          focus on <b>developing Fullstack web application</b>, Electron
+          application and <b>Oauth2</b>
         </p>
         <hr />
         <p>
-          I&rsquo;m passionate about many creative pursuits, including music,
-          photography, videography, aesthetic bodybuilding, and of course,
-          coding.
+          🔭 I’m a passionate software engineer with a strong background in web
+          and backend development.
         </p>
+        <p>
+          🚀 Currently as a solo developer leveraging the OpenAI API to create
+          innovative products & Full stack Developper.
+        </p>
+        <p>🎓 Matser(ingénieur) in UT ; Bachelor in Software Dev from SHU.</p>
+        <p>🌱 I’m currently learning Nextjs, trpc, openAI, openAI-whisper...</p>
         <p>
           I <b>love</b> building for the web. From something as simple as a
           single HTML file – all the way to large Next.js applications. The web
@@ -37,8 +43,8 @@ export default function AboutPage() {
             className="mr-10"
           >
             <div className="">
-              <TwitterIcon />
-              <div className="text-sm font-semibold mt-1">Twitter</div>
+              <LinkedInIcon />
+              <div className="text-sm font-semibold mt-1">LinkedIn</div>
             </div>
           </a>
           <a
@@ -49,7 +55,7 @@ export default function AboutPage() {
           >
             <div className="">
               <GitHubIcon />
-              <div className="text-sm font-semibold">GitHub</div>
+              <div className="text-sm font-semibold mt-1">GitHub</div>
             </div>
           </a>
         </div>
