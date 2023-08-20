@@ -21,7 +21,7 @@ export default async function Blog() {
         <title>Latest posts</title>
       </Head>
 
-      <main className="w-auto mr-5">
+      <main className="m-auto w-3/4">
         {blogs
           .filter(
             (blog: any) =>
@@ -36,7 +36,7 @@ export default async function Blog() {
             return (
               <Link href={`/posts/${blog.id}`} key={index} passHref>
                 <div
-                  className="flex items-center overflow-hidden md:flex-row bg-white border border-gray-200 rounded-lg shadow max-w-3xl ml-6 mb-6 h-36"
+                  className="flex items-center overflow-hidden flex-row bg-white border border-gray-200 rounded-lg shadow max-w-3xl mb-6 h-36"
                 >
                   <Image
                     src={blogItem.img}

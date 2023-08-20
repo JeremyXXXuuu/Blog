@@ -128,7 +128,7 @@ const Post = async ({params}:{params: IParams} ) => {
   const { id } = params;
   const { blog, blocks }: {id: string, blog : any, blocks :any} = await getPost(params);
   return (
-    <div>
+    <div className="m-auto w-3/4">
       <Head>
         <title>{blog.properties.Name.rich_text[0].plain_text}</title>
       </Head>
