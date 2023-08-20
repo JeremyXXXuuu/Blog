@@ -29,7 +29,7 @@ export function parseRichText(text: RichText[], className: string): { className:
     }
     return { className: updatedClassName.trim(), content: t.plain_text };
   });
-  console.log(parsedText);
+  // console.log(parsedText);
   return parsedText;
 }
 
@@ -61,6 +61,6 @@ export function parseRichText1(text: RichText[]): {content: string, styles: stri
     }
     return { styles: styles , content: t.plain_text };
   });
-  console.log(parsedText);
+  // console.log(parsedText);
   return parsedText;
 }

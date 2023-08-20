@@ -4,11 +4,8 @@ import { useTheme } from "next-themes";
 
 function ThemeButton() {
   const { theme, setTheme } = useTheme();
-  console.log(theme);
 
   const handleClicked = () => {
-    console.log(theme);
-    console.log("clicked");
     if (theme === "light") {
       setTheme("dark");
     } else {

@@ -191,5 +191,5 @@ async function getPost(params: IParams) {
       blocks: results,
   };
 }
-
+export const revalidate = 60;
 export default Post;

@@ -70,3 +70,4 @@ async function getBlogs() {
   return results;
 }
 
+export const revalidate = 60;

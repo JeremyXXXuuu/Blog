@@ -35,7 +35,6 @@ export default function Navbar() {
   const [mounted, setMounted] = React.useState(false);
   let pathName = usePathname() || "/";
   React.useEffect(() => setMounted(true), []);
-  console.log(mounted);
   return (
     <div className="flex flex-col justify-center">
 
