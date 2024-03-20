@@ -1,5 +1,10 @@
-
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
 import { RichText } from "../app/posts/[id]/types";
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
 
 export function parseRichText(text: RichText[], className: string): { className: string; content: string; }[] {
   const parsedText = text.map((t: RichText) => {
