@@ -1,4 +1,4 @@
-import ConnectLinks from "@/components/ConnectLinks";
+import ConnectLinks from "@/app/about/ConnectLinks";
 import { Link } from "@/components/ui/link";
 import { Section } from "@/components/ui/section";
 import React from "react";

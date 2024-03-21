@@ -1,6 +1,6 @@
 "use client";
 import { Fragment } from "react";
-import Link from "next/link";
+
 import { usePathname } from "next/navigation";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { NavLink } from "./ui/navLink";
 
 import clsx from "clsx";
+import { Link } from "./ui/link";
 
 const links = [
   { label: "About", href: "/about" },

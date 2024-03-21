@@ -59,7 +59,7 @@ export default async function PostPage({ params }: PostProps) {
         </p>
       )}
       <hr className="my-4" />
-      <Mdx code={post.body.code} />
+      {/* <Mdx code={post.body.code} /> */}
     </article>
   );
 }
