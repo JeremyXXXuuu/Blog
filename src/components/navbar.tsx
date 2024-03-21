@@ -1,54 +1,81 @@
 "use client";
+import { Fragment } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import ThemeButton from "./themeButton";
-import React from "react";
+import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 
-const navItems = {
-  "/": {
-    name: "Home",
-    x: 0,
-    y: 0,
-    w: "64px",
-  },
-  "/about": {
-    name: "About",
-    x: 64,
-    y: 35,
-    w: "65px",
-  },
-  "/blog": {
-    name: "Blog",
-    x: 127,
-    y: 69,
-    w: "56px",
-  },
-  "/projects": {
-    name: "projects",
-    x: 182,
-    y: 104,
-    w: "100px",
-  },
-};
+import { NavLink } from "./ui/navLink";
+
+import clsx from "clsx";
+
+const links = [
+  { label: "About", href: "/about" },
+  { label: "Blog", href: "/blog" },
+  { label: "Gear", href: "/gear" },
+  { label: "Projects", href: "/projects" },
+];
 
 export default function Navbar() {
-  const [mounted, setMounted] = React.useState(false);
-  let pathName = usePathname() || "/";
-  React.useEffect(() => setMounted(true), []);
+  const pathname = `/${usePathname().split("/")[1]}`; // active paths on dynamic subpages
+  const { theme } = useTheme();
+
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop =
+        window.pageYOffset || document.documentElement.scrollTop;
+      const scrollThreshold = 100; // Adjust this value as needed
+
+      setHasScrolled(scrollTop > scrollThreshold);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
-    <div className="flex justify-center flex-row md:flex-col">
-      <div className="md:m-auto">{mounted && <ThemeButton />}</div>
-      {Object.entries(navItems).map(([path, { name }]) => {
-        return (
-          <Link
-            key={path}
-            href={path}
-            className="px-3 pt-1.5 pb-1 mx-1 mt-0 rounded bg-neutral-50 text-xs font-semibold uppercase leading-normal text-neutral-800 shadow-[0_4px_9px_-4px_#fbfbfb] transition duration-150 ease-in-out hover:bg-neutral-200 hover:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:bg-neutral-200 focus:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] focus:outline-none focus:ring-0 active:bg-neutral-200 active:shadow-[0_8px_9px_-4px_rgba(251,251,251,0.3),0_4px_18px_0_rgba(251,251,251,0.2)] active:font-bold md:px-6 md:pt-2.5 md:pb-2 md:mt-6"
+    <header
+      className={clsx(
+        "sticky top-0 z-20 bg-white dark:bg-black lg:border-b transition-all duration-300",
+        hasScrolled ? "border-secondary" : "border-transparent"
+      )}
+    >
+      <nav className="px-4 md:px-6 py-3 lg max-w-[700px] mx-auto flex justify-between items-center gap-3">
+        <Link href="/" className="shrink-0 text-primary">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            viewBox="0 0 375 375"
+            version="1.2"
           >
-            {name}
-          </Link>
-        );
-      })}
-    </div>
+            <defs>
+              <clipPath id="clip1">
+                <path d="M 103.636719 64.171875 L 271.476562 64.171875 L 271.476562 310 L 103.636719 310 Z M 103.636719 64.171875 " />
+              </clipPath>
+            </defs>
+            <g id="surface1">
+              <g clipPath="url(#clip1)" clipRule="nonzero">
+                <path
+                  fill="currentColor"
+                  d="M 211.375 151.808594 C 203.050781 149.433594 194.765625 155.722656 194.765625 164.390625 L 194.765625 297.785156 C 194.765625 305.234375 201.695312 310.808594 208.941406 309.09375 C 244.675781 300.671875 271.355469 268.492188 271.355469 230.195312 C 271.355469 193.117188 246.363281 161.785156 211.375 151.808594 Z M 180.15625 144.734375 L 180.15625 297.785156 C 180.15625 305.234375 173.230469 310.808594 165.980469 309.09375 C 130.246094 300.675781 103.566406 268.492188 103.566406 230.195312 L 103.566406 74.296875 C 103.566406 68.449219 108.902344 64.046875 114.640625 65.164062 C 151.925781 72.410156 180.15625 105.335938 180.15625 144.734375 Z M 180.15625 144.734375 "
+                />
+              </g>
+            </g>
+          </svg>
+        </Link>
+        <ul className="hidden md:flex items-center gap-1">
+          {links.map((link) => (
+            <li key={link.href}>
+              <NavLink href={link.href}>{link.label}</NavLink>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 }
