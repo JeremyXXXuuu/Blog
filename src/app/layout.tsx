@@ -1,7 +1,7 @@
 import Navbar from "../components/navbar";
-import { Metadata } from 'next'
+import { Metadata } from "next";
 import Providers from "./provider";
-import "../styles/globals.css"
+import "../styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Jeremy's Blog",
@@ -13,20 +13,22 @@ export default function RootLayout({
   // This will be populated with nested layouts or pages
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <html lang="en">
-      <body>      
-          <Providers>
-        <div className="h-screen w-full flex flex-col justify-start md:grid grid-cols-4 gap-6 overflow-auto">
-          <div className="ol-span-1 mt-12 justify-self-end">
-            <Navbar />
+      <body>
+        <Providers>
+          <Navbar />
+          <div
+            className={
+              "px-6 md:px-6 pt-16 pb-24 md:pt-20 md:pb-44 max-w-[700px] mx-auto"
+            }
+          >
+            {children}
           </div>
-          <div className="col-span-3 mt-12 ml-6 overflow-auto">{children}</div>
-        </div>
-          </Providers>
+        </Providers>
       </body>
     </html>
-  )
+  );
 }
