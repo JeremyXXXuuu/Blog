@@ -1,65 +1,114 @@
-// import type { Metadata } from "next";
-import { GitHubIcon, LinkedInIcon } from "../../components/icons";
+import ConnectLinks from "@/components/ConnectLinks";
+import { Link } from "@/components/ui/link";
+import { Section } from "@/components/ui/section";
+import React from "react";
+import Workplaces from "./workPlaces";
+import OrosoundIMG from "@/public/work/orosound.png";
+import SiemensIMG from "@/public/work/siemens.png";
+import shuIMG from "@/public/work/shu.png";
 
-export const metadata = {
-  title: "About",
-  description: "VP of Developer Experience at Vercel.",
-};
-
-export default function AboutPage() {
+function About() {
   return (
-    <section className="m-auto w-3/4">
-      <h1 className="text-4xl text-black dark:text-blue-400">About Me</h1>
-      <p className="text-lg mt-5 mb-3">Hey, I&rsquo;m Jeremy.</p>
-      <div className="text-lg">
-        <p>
-          I&rsquo;m currently the <b>Fullstack Developer</b> at Orosound, I
-          focus on <b>developing Fullstack web application</b>, Electron
-          application and <b>Oauth2</b>
-        </p>
-        <hr />
-        <p>
-          🔭 I’m a passionate software engineer with a strong background in web
-          and backend development.
-        </p>
-        <p>
-          🚀 Currently as a solo developer leveraging the OpenAI API to create
-          innovative products & Full stack Developper.
-        </p>
-        <p>🎓 Matser(ingénieur) in UT ; Bachelor in Software Dev from SHU.</p>
-        <p>🌱 I’m currently learning Nextjs, trpc, openAI, openAI-whisper...</p>
-        <p>
-          I <b>love</b> building for the web. From something as simple as a
-          single HTML file – all the way to large Next.js applications. The web
-          is incredible. Anyone can become a developer, writer, or creator – and
-          no one has to ask for permission. You can just build.
-        </p>
-        <p className="">Outside of Orosound, I ...</p>
-        <div className="flex justify-start mt-5">
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://twitter.com/leeerob"
-            className="mr-10"
-          >
-            <div className="">
-              <LinkedInIcon />
-              <div className="text-sm font-semibold mt-1">LinkedIn</div>
-            </div>
-          </a>
-          <a
-            rel="noopener noreferrer"
-            target="_blank"
-            href="https://github.com/jeremyxxxuuu"
-            className=""
-          >
-            <div className="">
-              <GitHubIcon />
-              <div className="text-sm font-semibold mt-1">GitHub</div>
-            </div>
-          </a>
+    <div
+      className="flex animate-in flex-col gap-16 md:gap-24"
+      style={{ "--index": 3 } as React.CSSProperties}
+    >
+      <Section heading="About" headingAlignment="left">
+        <div className="flex flex-col gap-6">
+          <p>Hello world, I&apos;m Huamao XU!</p>
+
+          <p>
+            I have a passion for design and am always looking for ways to
+            incorporate it into my engineering work.
+          </p>
+          <p>
+            When I&apos;m not at my desk I am probably lifting weights, playing
+            soccer, or at a coffee shop :)
+          </p>
         </div>
-      </div>
-    </section>
+      </Section>
+
+      <Section heading="Connect" headingAlignment="left">
+        <div className="flex w-full flex-col gap-8">
+          <p>
+            Have a question or just want to chat? Feel free to{" "}
+            <Link href="jeremyxu1234@gmail.com">email me</Link>. Try finding me
+            anywhere else at @jeremyxxxuuu.
+          </p>
+          <ul className="animated-list grid flex-grow grid-cols-1 gap-2 md:grid-cols-2">
+            {ConnectLinks.map((link) => (
+              <li className="col-span-1 transition-opacity" key={link.label}>
+                <Link
+                  href={link.href}
+                  className="inline-grid w-full rounded-lg border border-primary p-4 no-underline transition-opacity"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="text-xl">{link.icon}</span>
+                    {link.label}
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      className="ml-auto h-5 w-5 text-secondary"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M5.22 14.78a.75.75 0 001.06 0l7.22-7.22v5.69a.75.75 0 001.5 0v-7.5a.75.75 0 00-.75-.75h-7.5a.75.75 0 000 1.5h5.69l-7.22 7.22a.75.75 0 000 1.06z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </Section>
+
+      <Section heading="Work" headingAlignment="left">
+        <div className="flex w-full flex-col gap-8">
+          <p>
+            {new Date().getFullYear() - 2022}+ years of professional development
+            experience.
+          </p>
+          <p>
+            I started my career teaching others how to code, which I will always
+            be appreciative of. Then I worked at a few small local companies.
+            Now I&apos;m a full stack engineer currently working at{" "}
+            <Link className="underline" href="https://www.orosound.com/">
+              Orosound
+            </Link>
+            , French tech company with a breakthrough expertise in audio
+            innovation.
+          </p>
+          <Workplaces items={workplaces} />
+        </div>
+      </Section>
+    </div>
   );
 }
+const workplaces = [
+  {
+    title: "Full Stack Engineer",
+    company: "Orosound",
+    time: "2022 -",
+    imageSrc: OrosoundIMG,
+    link: "https://orosound.com/",
+  },
+  {
+    title: "Software Engineer",
+    company: "Siemens Healthineers",
+    time: "2021 - 2022",
+    imageSrc: SiemensIMG,
+    link: "https://www.siemens-healthineers.com/",
+  },
+  {
+    title: "Coding Camp Instructor",
+    company: "University of Shanghai",
+    time: "2019",
+    imageSrc: shuIMG,
+    link: "https://en.shu.edu.cn/",
+  },
+];
+
+export default About;
