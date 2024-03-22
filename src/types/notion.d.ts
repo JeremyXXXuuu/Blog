@@ -31,6 +31,7 @@ export type Block<T extends string = string, D = any> = {
   }; // Update this type as per your data structure
   has_children: boolean;
   archived: boolean;
+  children: Block<T>[];
   type: T;
 } & { [key in T]: BlockData } & Record<string, any>;
 

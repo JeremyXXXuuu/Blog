@@ -27,7 +27,7 @@ async function blockRetrieve(id: string) {
   return blockRet;
 }
 
-async function getBlocks(id: string) {
+async function getBlocks(id: string): Promise<any[]> {
   const { results } = await client.blocks.children.list({
     block_id: id,
   });
@@ -35,9 +35,9 @@ async function getBlocks(id: string) {
   // Fetches all child blocks recursively
   // be mindful of rate limits if you have large amounts of nested blocks
   // See https://developers.notion.com/docs/working-with-page-content#reading-nested-blocks
-  const childBlocks = results.map(async (block) => {
-    if (block.has_children) {
-      const children = await getBlocks(block.id);
+  const childBlocks: Promise<any>[] = results.map(async (block) => {
+    if ((block as { has_children: boolean }).has_children) {
+      const children: any[] = await getBlocks(block.id);
       return { ...block, children };
     }
     return block;
@@ -81,7 +81,7 @@ async function getBlocks(id: string) {
  * @param {number} maximum - The largest integer value that can be returned, inclusive.
  * @returns {number} - A random integer between `min` and `max`, inclusive.
  */
-function getRandomInt(minimum, maximum) {
+function getRandomInt(minimum: number, maximum: number): number {
   const min = Math.ceil(minimum);
   const max = Math.floor(maximum);
   return Math.floor(Math.random() * (max - min + 1)) + min;

@@ -38,10 +38,18 @@ export function renderBlock(block: Block) {
         </h3>
       );
     case "bulleted_list": {
-      return <ul>{block[type].children.map((child) => renderBlock(child))}</ul>;
+      return (
+        <ul>
+          {block[type].children.map((child: Block) => renderBlock(child))}
+        </ul>
+      );
     }
     case "numbered_list": {
-      return <ol>{block[type].children.map((child) => renderBlock(child))}</ol>;
+      return (
+        <ol>
+          {block[type].children.map((child: Block) => renderBlock(child))}
+        </ol>
+      );
     }
     case "bulleted_list_item":
     case "numbered_list_item":
@@ -157,7 +165,7 @@ export function renderBlock(block: Block) {
                 block[type].has_column_header && index === 0 ? "th" : "td";
               return (
                 <tr key={child.id}>
-                  {child.table_row?.cells?.map((cell, i) => (
+                  {child.table_row?.cells?.map((cell: Block, i: number) => (
                     // eslint-disable-next-line react/no-array-index-key
                     <RowElement key={`${cell.plain_text}-${i}`}>
                       <Text title={cell} />
@@ -187,7 +195,7 @@ export function renderBlock(block: Block) {
   }
 }
 
-export function renderNestedList(blocks) {
+export function renderNestedList(blocks: Block) {
   const { type } = blocks;
   const value = blocks[type];
   if (!value) return null;
@@ -195,7 +203,7 @@ export function renderNestedList(blocks) {
   const isNumberedList = value.children[0].type === "numbered_list_item";
 
   if (isNumberedList) {
-    return <ol>{value.children.map((block) => renderBlock(block))}</ol>;
+    return <ol>{value.children.map((block: Block) => renderBlock(block))}</ol>;
   }
-  return <ul>{value.children.map((block) => renderBlock(block))}</ul>;
+  return <ul>{value.children.map((block: Block) => renderBlock(block))}</ul>;
 }
