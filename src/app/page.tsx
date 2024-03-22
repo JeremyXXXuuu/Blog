@@ -45,7 +45,7 @@ export default function Home() {
         >
           <li className="transition-opacity">
             <Link
-              href="/links"
+              href="jeremyxu1234@gmail.com"
               className="flex items-center gap-2 no-underline"
             >
               <ArrowUpRightIcon className="h-5 w-5" />
@@ -54,7 +54,7 @@ export default function Home() {
           </li>
           <li className="transition-opacity">
             <Link
-              href="mailto:contact@b-r.io"
+              href="jeremyxu1234@gmail.com"
               className="flex items-center gap-2 no-underline"
             >
               <ArrowUpRightIcon className="h-5 w-5" />
