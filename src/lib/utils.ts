@@ -1,12 +1,15 @@
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
-import { RichText } from "../app/posts/[id]/types";
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
+import { RichText } from "../app/blog/[id]/types";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
-export function parseRichText(text: RichText[], className: string): { className: string; content: string; }[] {
+export function parseRichText(
+  text: RichText[],
+  className: string
+): { className: string; content: string }[] {
   const parsedText = text.map((t: RichText) => {
     let updatedClassName = className;
 
@@ -38,13 +41,13 @@ export function parseRichText(text: RichText[], className: string): { className:
   return parsedText;
 }
 
-
-export function parseRichText1(text: RichText[]): {content: string, styles: string[] }[] {
+export function parseRichText1(
+  text: RichText[]
+): { content: string; styles: string[] }[] {
   const parsedText = text.map((t: RichText) => {
     const styles = [];
     for (const [key, value] of Object.entries(t.annotations)) {
       if (value && key !== "color") {
-
         switch (key) {
           case "bold":
             styles.push("bold");
@@ -64,7 +67,7 @@ export function parseRichText1(text: RichText[]): {content: string, styles: stri
         }
       }
     }
-    return { styles: styles , content: t.plain_text };
+    return { styles: styles, content: t.plain_text };
   });
   // console.log(parsedText);
   return parsedText;
