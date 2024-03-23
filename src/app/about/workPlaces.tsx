@@ -31,10 +31,10 @@ function Workplace({ title, company, imageSrc, time, link }: Workplace) {
         />
         <div className="flex flex-col gap-px">
           <p className={link ? "external-arrow" : ""}>{title}</p>
-          <p className="text-secondary">{company}</p>
+          <p className="text-muted-foreground">{company}</p>
         </div>
       </div>
-      {time && <time className="text-secondary">{time}</time>}
+      {time && <time className="text-muted-foreground">{time}</time>}
     </>
   );
   return (

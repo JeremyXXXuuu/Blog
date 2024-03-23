@@ -109,7 +109,7 @@ const Post = async ({ params }: { params: IParams }) => {
         <div className="flex justify-center h-60 mb-6">
           <Image
             className="object-cover max-w-ful shadow-2xl rounded-lg"
-            src={blog.cover.external.url}
+            src={blog.cover.external?.url || blog.cover.file.url}
             width={600}
             height={300}
             alt={""}

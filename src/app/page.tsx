@@ -12,14 +12,14 @@ export default function Home() {
             Jeremy XU
           </h1>
           <p
-            className="animate-in text-secondary"
+            className="animate-in text-muted-foreground"
             style={{ "--index": 1 } as React.CSSProperties}
           >
             Software Engineer & Creator
           </p>
         </div>
         <div
-          className="flex animate-in flex-col gap-6 text-secondary md:flex-row md:items-center"
+          className="flex animate-in flex-col gap-6 text-muted-foreground md:flex-row md:items-center"
           style={{ "--index": 1 } as React.CSSProperties}
         >
           <Image
@@ -40,7 +40,7 @@ export default function Home() {
           creative vlogs, and personal development.
         </p>
         <ul
-          className="animated-list flex animate-in flex-col gap-2 text-secondary md:flex-row md:gap-6"
+          className="animated-list flex animate-in flex-col gap-2 text-muted-foreground md:flex-row md:gap-6"
           style={{ "--index": 2 } as React.CSSProperties}
         >
           <li className="transition-opacity">
@@ -67,11 +67,11 @@ export default function Home() {
         className="flex animate-in flex-col gap-8"
         style={{ "--index": 3 } as React.CSSProperties}
       >
-        <h2 className="text-secondary">Latest Posts</h2>
+        <h2 className="text-muted-foreground">Latest Posts</h2>
         {/* <PostList posts={posts} /> */}
         <Link
           href="/blog"
-          className="text-secondary underline underline-offset-4 hover:text-primary"
+          className="text-muted-foreground underline underline-offset-4 hover:text-primary"
         >
           See All
         </Link>

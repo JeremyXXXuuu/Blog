@@ -20,28 +20,43 @@ export default async function Blog() {
   return (
     <div>
       <Head>
-        <title>Latest posts</title>
+        <title>Latest blogs</title>
       </Head>
 
-      <main className="m-auto w-3/4">
-        <ul className="flex flex-col animated-list">
-          {blogs
-            .filter(
-              (blog: any) =>
-                blog.cover != null &&
-                blog.properties.Published.checkbox === true &&
-                blog.properties.Name.rich_text[0] != null
-            )
-            .map((blog: any, index: number) => {
-              const blogItem: BlogItem = {
-                slug: blog.id,
-                name: blog.properties.Name.rich_text[0].plain_text,
-                img: blog.cover.external.url,
-                created_date: blog.properties.Date.created_time,
-              };
-              return <Post blogItem={blogItem} key={blog.idg} />;
-            })}
-        </ul>
+      <main className="m-auto ">
+        <div className="flex flex-col gap-16 md:gap-24 ">
+          <div className="flex flex-col gap-8">
+            <div>
+              <h1 className="animate-in text-3xl font-bold tracking-tight">
+                Blogs
+              </h1>
+              <p
+                className="animate-in text-muted-foreground"
+                style={{ "--index": 1 } as React.CSSProperties}
+              >
+                posts about code, design, more ...
+              </p>
+            </div>
+          </div>
+          <ul className="flex flex-col animated-list">
+            {blogs
+              .filter(
+                (blog: any) =>
+                  blog.cover != null &&
+                  blog.properties.Published.checkbox === true &&
+                  blog.properties.Name.rich_text[0] != null
+              )
+              .map((blog: any, index: number) => {
+                const blogItem: BlogItem = {
+                  slug: blog.id,
+                  name: blog.properties.Name.rich_text[0].plain_text,
+                  img: blog.cover.external.url,
+                  created_date: blog.properties.Date.created_time,
+                };
+                return <Post blogItem={blogItem} key={blog.idg} />;
+              })}
+          </ul>
+        </div>
       </main>
     </div>
   );
@@ -51,16 +66,14 @@ function Post({ blogItem }: { blogItem: BlogItem }) {
   const { name, img, created_date, slug } = blogItem;
   return (
     <li className="py-3 group transition-opacity" key={slug}>
-      <div className="transition-opacity">
-        <div className="flex justify-between gap-6 items-center">
-          <Section heading={formatDate(created_date)}>
-            <Link href={`/blog/${slug}`} className="font-medium leading-tight">
-              {name}
-            </Link>
-          </Section>
-          <div className="md:hidden aspect-square min-w-24 w-24 h-24 relative drop-shadow-sm">
-            <Image src={img} alt={name} fill className="object-cover rounded" />
-          </div>
+      <div className="flex justify-between gap-6 items-center">
+        <Section heading={formatDate(created_date)}>
+          <Link href={`/blog/${slug}`} className="font-medium leading-tight">
+            {name}
+          </Link>
+        </Section>
+        <div className="md:hidden aspect-square min-w-24 w-24 h-24 relative drop-shadow-sm">
+          <Image src={img} alt={name} fill className="object-cover rounded" />
         </div>
       </div>
     </li>
