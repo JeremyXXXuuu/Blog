@@ -13,6 +13,13 @@ async function blogs() {
   return blogs;
 }
 
+async function projects() {
+  const projects = await client.databases.query({
+    database_id: `${process.env.NOTION_PROJECTS_DATABASE_ID}`,
+  });
+  return projects;
+}
+
 async function blog(id: string) {
   const blog = await client.pages.retrieve({
     page_id: id,
@@ -87,4 +94,4 @@ function getRandomInt(minimum: number, maximum: number): number {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-export { blogs, blog, blockRetrieve, getBlocks };
+export { blogs, blog, blockRetrieve, getBlocks, projects };
