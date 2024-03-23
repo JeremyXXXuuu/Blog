@@ -13,10 +13,10 @@ interface ProjectItem {
   description: string;
 }
 
-async function Projects() {
-  const { results: projects } = (await getProjects()) as any;
+async function Project() {
+  const { results: project } = (await getProjects()) as any;
 
-  //   console.log(projects);
+  //   console.log(project);
 
   return (
     <main className="m-auto">
@@ -24,18 +24,18 @@ async function Projects() {
         <div className="flex flex-col gap-8">
           <div>
             <h1 className="animate-in text-3xl font-bold tracking-tight">
-              Projects
+              Project
             </h1>
             <p
               className="text-muted-foreground animate-in"
               style={{ "--index": 1 } as React.CSSProperties}
             >
-              Here are some of the projects I&apos;ve worked on.
+              Here are some of the project I&apos;ve worked on.
             </p>
           </div>
         </div>
         <ul className="flex flex-col animated-list">
-          {projects
+          {project
             .filter(
               (project: any) =>
                 project.cover != null &&
@@ -88,4 +88,4 @@ async function getProjects() {
   return await projects();
 }
 
-export default Projects;
+export default Project;

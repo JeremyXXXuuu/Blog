@@ -22,7 +22,7 @@ import { Link } from "./ui/link";
 const links = [
   { label: "About", href: "/about" },
   { label: "Blog", href: "/blog" },
-  { label: "Projects", href: "/projects" },
+  { label: "Project", href: "/project" },
 ];
 
 export default function Navbar() {

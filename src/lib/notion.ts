@@ -8,14 +8,14 @@ const client = new Client({
 
 async function blogs() {
   const blogs = await client.databases.query({
-    database_id: `${process.env.NOTION_DATABASE_ID}`,
+    database_id: `${process.env.NOTION_BLOG_DATABASE_ID}`,
   });
   return blogs;
 }
 
 async function projects() {
   const projects = await client.databases.query({
-    database_id: `${process.env.NOTION_PROJECTS_DATABASE_ID}`,
+    database_id: `${process.env.NOTION_PROJECT_DATABASE_ID}`,
   });
   return projects;
 }
