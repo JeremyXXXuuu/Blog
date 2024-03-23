@@ -18,7 +18,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>
+        <Providers
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <Navbar />
           <div
             className={
