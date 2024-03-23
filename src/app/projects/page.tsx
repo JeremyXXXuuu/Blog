@@ -72,7 +72,7 @@ function Post({ projectItem }: { projectItem: ProjectItem }) {
 
         <div className="flex flex-col gap-2">
           <div className="flex flex-row gap-2">
-            <Link href={`/blog/${slug}`} className="font-medium leading-tight">
+            <Link href={`/pages/${slug}`} className="font-medium leading-tight">
               {name}
             </Link>
             <div className="text-sm text-gray-500">{date}</div>
