@@ -51,7 +51,6 @@ async function Projects() {
                 description:
                   project.properties.Description.rich_text[0].plain_text,
               };
-              console.log("projectItem", projectItem);
               return <Post projectItem={projectItem} key={project.idg} />;
             })}
         </ul>
@@ -66,7 +65,7 @@ function Post({ projectItem }: { projectItem: ProjectItem }) {
     <li className="py-3 group transition-opacity" key={slug}>
       <div className="flex py-6 flex-col md:flex-row gap-4 md:gap-6 items-center">
         <div className="hidden md:flex aspect-square min-w-24 w-24 h-24 relative drop-shadow-sm">
-          <Link href={`/blog/${slug}`} className="font-medium leading-tight">
+          <Link href={`/pages/${slug}`} className="font-medium leading-tight">
             <Image src={img} alt={name} fill className="object-cover rounded" />
           </Link>
         </div>

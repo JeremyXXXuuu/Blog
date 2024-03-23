@@ -68,7 +68,7 @@ function Post({ blogItem }: { blogItem: BlogItem }) {
     <li className="py-3 group transition-opacity" key={slug}>
       <div className="flex justify-between gap-6 items-center">
         <Section heading={formatDate(created_date)}>
-          <Link href={`/blog/${slug}`} className="font-medium leading-tight">
+          <Link href={`/pages/${slug}`} className="font-medium leading-tight">
             {name}
           </Link>
         </Section>

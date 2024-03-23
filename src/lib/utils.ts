@@ -1,6 +1,6 @@
 import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { RichText } from "../app/blog/[id]/types";
+import { RichText } from "../app/pages/[id]/types";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
