@@ -115,7 +115,7 @@ export function renderBlock(block: Block) {
       );
     case "code":
       const { language } = block[type];
-      if (language !== "plaintext" && !hljs.getLanguage(language)) {
+      if (language !== "plain text" && !hljs.getLanguage(language)) {
         console.warn(`No language support for code block: ${language}`);
       }
       const code = block[type].rich_text[0].plain_text;
