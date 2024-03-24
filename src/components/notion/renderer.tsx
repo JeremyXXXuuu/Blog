@@ -4,8 +4,9 @@ import Link from "next/link";
 import Text from "./text";
 import styles from "@/styles/post.module.css";
 
-import { BlockObjectResponse } from "@notionhq/client/build/src/api-endpoints";
 import { Block } from "@/types/notion";
+import hljs from "highlight.js";
+import "highlight.js/styles/github.css";
 
 //todo types
 
@@ -74,7 +75,6 @@ export function renderBlock(block: Block) {
         </div>
       );
     case "toggle":
-      console.log(block);
       return (
         <details>
           <summary>
@@ -114,11 +114,20 @@ export function renderBlock(block: Block) {
         <blockquote key={id}>{block[type].rich_text[0].plain_text}</blockquote>
       );
     case "code":
+      const { language } = block[type];
+      if (language !== "plaintext" && !hljs.getLanguage(language)) {
+        console.warn(`No language support for code block: ${language}`);
+      }
+      const code = block[type].rich_text[0].plain_text;
+      const highlightedCode = hljs.getLanguage(language)
+        ? hljs.highlight(code, { language }).value
+        : hljs.highlightAuto(code).value;
       return (
-        <pre className={styles.pre}>
-          <code className={styles.code_block} key={id}>
-            {block[type].rich_text[0].plain_text}
-          </code>
+        <pre className="bg-secondary flex p-3 rounded-lg overflow-x-auto">
+          <code
+            className={`language-${language}`}
+            dangerouslySetInnerHTML={{ __html: highlightedCode }}
+          />
         </pre>
       );
     case "file": {

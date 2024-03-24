@@ -20,7 +20,7 @@ const config = {
     extend: {
       textColor: {
         primary: "var(--gray-12)",
-        secondary: "var(--gray-11)",
+        secondary: "var(--blue-11)",
         tertiary: "var(--gray-9)",
         brand: "var(--brand)",
       },
@@ -73,10 +73,20 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        in: {
+          from: { opacity: "0", transform: "translateY(18px)" },
+          to: { opacity: "1", transform: "none" },
+        },
+        "in-reverse": {
+          from: { opacity: "0", transform: "translateY(-18px)" },
+          to: { opacity: "1", transform: "none" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        in: "in .6s both",
+        "in-reverse": "in-reverse .6s both",
       },
     },
   },

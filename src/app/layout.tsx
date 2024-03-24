@@ -2,6 +2,7 @@ import Navbar from "../components/navbar";
 import { Metadata } from "next";
 import Providers from "./provider";
 import "../styles/globals.css";
+import "highlight.js/styles/github.css";
 
 export const metadata: Metadata = {
   title: "Jeremy's Blog",
