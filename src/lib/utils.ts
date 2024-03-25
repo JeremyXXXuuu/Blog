@@ -3,6 +3,8 @@ import { twMerge } from "tailwind-merge";
 import { RichText } from "../app/pages/[id]/types";
 
 export function cn(...inputs: ClassValue[]) {
+  console.log("clsx ", clsx(inputs));
+  console.log("merge", twMerge(clsx(inputs)));
   return twMerge(clsx(inputs));
 }
 
