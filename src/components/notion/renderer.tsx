@@ -7,6 +7,7 @@ import styles from "@/styles/post.module.css";
 import { Block } from "@/types/notion";
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark-dimmed.css";
+import Image from "next/image";
 
 //todo types
 
@@ -106,7 +107,7 @@ export function renderBlock(block: Block, theme?: string) {
         : "";
       return (
         <figure>
-          <img src={src} alt={caption} />
+          <Image src={src} alt={caption} />
           {caption && <figcaption>{caption}</figcaption>}
         </figure>
       );
