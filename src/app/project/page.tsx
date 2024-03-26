@@ -62,7 +62,11 @@ export default async function Project() {
 function Post({ projectItem }: { projectItem: ProjectItem }) {
   const { name, img, date, slug, description } = projectItem;
   return (
-    <li className="py-3 group transition-opacity" key={slug}>
+    <li
+      className="py-3 group transition-opacity animate-in"
+      key={slug}
+      style={{ "--index": 2 } as React.CSSProperties}
+    >
       <div className="flex py-6 flex-col md:flex-row gap-4 md:gap-6 items-center">
         <div className="hidden md:flex aspect-square min-w-24 w-24 h-24 relative drop-shadow-sm">
           <Link href={`/pages/${slug}`} className="font-medium leading-tight">

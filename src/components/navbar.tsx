@@ -49,7 +49,7 @@ export default function Navbar() {
   return (
     <header
       className={clsx(
-        "sticky top-0 z-20 bg-white dark:bg-black lg:border-b transition-all duration-300",
+        "sticky top-0 z-20 bg-white dark:bg-background lg:border-b transition-all duration-300",
         hasScrolled ? "border-secondary" : "border-transparent"
       )}
     >

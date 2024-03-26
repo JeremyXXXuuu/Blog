@@ -65,7 +65,11 @@ export default async function Blog() {
 function Post({ blogItem }: { blogItem: BlogItem }) {
   const { name, img, created_date, slug } = blogItem;
   return (
-    <li className="py-3 group transition-opacity" key={slug}>
+    <li
+      className="py-3 group transition-opacity animate-in"
+      key={slug}
+      style={{ "--index": 2 } as React.CSSProperties}
+    >
       <div className="flex justify-between gap-6 items-center">
         <Section heading={formatDate(created_date)}>
           <Link href={`/pages/${slug}`} className="font-medium leading-tight">
