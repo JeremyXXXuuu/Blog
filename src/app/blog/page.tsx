@@ -69,14 +69,19 @@ function Post({ blogItem }: { blogItem: BlogItem }) {
   const { name, img, created_date, slug } = blogItem;
   return (
     <li className="py-3 group transition-opacity" key={slug}>
-      <div className="flex justify-between gap-6 items-center">
+      <div className="flex justify-between gap-10 items-center">
         <Section heading={formatDate(created_date)}>
           <Link href={`/pages/${slug}`} className="font-medium leading-tight">
             {name}
           </Link>
         </Section>
-        <div className="md:hidden aspect-square min-w-24 w-24 h-24 relative drop-shadow-sm">
-          <Image src={img} alt={name} fill className="object-cover rounded" />
+        <div className="md:hidden aspect-square min-w-24 w-24 h-16 relative drop-shadow-sm">
+          <Image
+            src={img}
+            alt={name}
+            fill
+            className="object-cover rounded-lg"
+          />
         </div>
       </div>
     </li>

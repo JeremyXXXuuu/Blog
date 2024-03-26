@@ -105,7 +105,7 @@ export default function Navbar() {
             <DropdownMenuTrigger asChild>
               <Button variant="outline">Menu</Button>
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-32">
+            <DropdownMenuContent className="w-24">
               {/* <DropdownMenuLabel>Panel Position</DropdownMenuLabel> */}
               {/* <DropdownMenuSeparator /> */}
               <DropdownMenuRadioGroup
