@@ -12,12 +12,17 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuLabel,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 
 import { NavLink } from "./ui/navLink";
 
 import clsx from "clsx";
 import { Link } from "./ui/link";
+import { useRouter } from "next/navigation";
 
 const links = [
   { label: "About", href: "/about" },
@@ -28,6 +33,7 @@ const links = [
 export default function Navbar() {
   const pathname = `/${usePathname().split("/")[1]}`; // active paths on dynamic subpages
   const { theme, setTheme } = useTheme();
+  const Router = useRouter();
 
   const [hasScrolled, setHasScrolled] = useState(false);
 
@@ -45,6 +51,16 @@ export default function Navbar() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  const [page, setPage] = useState("home");
+
+  function handlePageChange(value: string) {
+    setPage(value);
+    // You can use the value to navigate to the page
+    if (value === "home") Router.push(`/`);
+    else {
+      Router.push(`/${value}`);
+    }
+  }
 
   return (
     <header
@@ -84,6 +100,30 @@ export default function Navbar() {
             </li>
           ))}
         </ul>
+        <div className="md:hidden">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="outline">Menu</Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="w-32">
+              {/* <DropdownMenuLabel>Panel Position</DropdownMenuLabel> */}
+              {/* <DropdownMenuSeparator /> */}
+              <DropdownMenuRadioGroup
+                value={page}
+                onValueChange={handlePageChange}
+              >
+                {/* <DropdownMenuRadioItem value="home">Home</DropdownMenuRadioItem> */}
+                <DropdownMenuRadioItem value="about">
+                  About
+                </DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="blog">Blog</DropdownMenuRadioItem>
+                <DropdownMenuRadioItem value="project">
+                  Project
+                </DropdownMenuRadioItem>
+              </DropdownMenuRadioGroup>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon">
