@@ -1,11 +1,14 @@
 import Navbar from "../components/navbar";
 import { Metadata } from "next";
 import Providers from "./provider";
+import Favicon from "@/public/favicon.png";
+
 import "../styles/globals.css";
 
 export const metadata: Metadata = {
   title: "Jeremy's Blog",
   description: "Jeremy's Blog",
+  icons: [{ rel: "icon", url: Favicon.src }],
 };
 
 export default function RootLayout({
