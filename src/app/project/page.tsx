@@ -13,7 +13,7 @@ interface ProjectItem {
   description: string;
 }
 
-async function Project() {
+export default async function Project() {
   const { results: project } = (await getProjects()) as any;
 
   //   console.log(project);
@@ -87,5 +87,3 @@ function Post({ projectItem }: { projectItem: ProjectItem }) {
 async function getProjects() {
   return await projects();
 }
-
-export default Project;

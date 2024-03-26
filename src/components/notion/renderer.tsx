@@ -6,11 +6,11 @@ import styles from "@/styles/post.module.css";
 
 import { Block } from "@/types/notion";
 import hljs from "highlight.js";
-import "highlight.js/styles/github.css";
+import "highlight.js/styles/github-dark-dimmed.css";
 
 //todo types
 
-export function renderBlock(block: Block) {
+export function renderBlock(block: Block, theme?: string) {
   const { type, id } = block;
 
   switch (type) {
@@ -41,14 +41,18 @@ export function renderBlock(block: Block) {
     case "bulleted_list": {
       return (
         <ul>
-          {block[type].children.map((child: Block) => renderBlock(child))}
+          {block[type].children.map((child: Block) =>
+            renderBlock(child, theme)
+          )}
         </ul>
       );
     }
     case "numbered_list": {
       return (
         <ol>
-          {block[type].children.map((child: Block) => renderBlock(child))}
+          {block[type].children.map((child: Block) =>
+            renderBlock(child, theme)
+          )}
         </ol>
       );
     }
@@ -81,7 +85,7 @@ export function renderBlock(block: Block) {
             <Text title={block[type].rich_text} />
           </summary>
           {block.children?.map((child) => (
-            <Fragment key={child.id}>{renderBlock(child)}</Fragment>
+            <Fragment key={child.id}>{renderBlock(child, theme)}</Fragment>
           ))}
         </details>
       );
@@ -89,7 +93,7 @@ export function renderBlock(block: Block) {
       return (
         <div className={styles.childPage}>
           <strong>{block[type]?.title}</strong>
-          {block.children.map((child) => renderBlock(child))}
+          {block.children.map((child) => renderBlock(child, theme))}
         </div>
       );
     case "image": {
@@ -123,7 +127,10 @@ export function renderBlock(block: Block) {
         ? hljs.highlight(code, { language }).value
         : hljs.highlightAuto(code).value;
       return (
-        <pre className="bg-secondary flex p-3 rounded-lg overflow-x-auto">
+        <pre
+          className="bg-secondary flex p-3 rounded-lg overflow-x-auto"
+          style={{ whiteSpace: "pre-wrap" }}
+        >
           <code
             className={`language-${language}`}
             dangerouslySetInnerHTML={{ __html: highlightedCode }}
@@ -190,12 +197,14 @@ export function renderBlock(block: Block) {
     case "column_list": {
       return (
         <div className={styles.row}>
-          {block.children.map((childBlock) => renderBlock(childBlock))}
+          {block.children.map((childBlock) => renderBlock(childBlock, theme))}
         </div>
       );
     }
     case "column": {
-      return <div>{block.children.map((child) => renderBlock(child))}</div>;
+      return (
+        <div>{block.children.map((child) => renderBlock(child, theme))}</div>
+      );
     }
     default:
       return `❌ Unsupported block (${

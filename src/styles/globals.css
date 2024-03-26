@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
 
 @layer base {
   :root {
@@ -67,9 +67,7 @@
   h3 {
     @apply text-lg;
   }
-  a {
-    @apply text-secondary underline;
-  }
+
 }
 
 @media (hover: hover) {

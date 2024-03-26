@@ -33,7 +33,13 @@ export default function Text({ title }: { title: any }) {
         )}
         key={text.content}
       >
-        {text.link ? <a href={text.link.url}>{text.content}</a> : text.content}
+        {text.link ? (
+          <a className="underline" href={text.link.url}>
+            {text.content}
+          </a>
+        ) : (
+          text.content
+        )}
       </span>
     );
   });

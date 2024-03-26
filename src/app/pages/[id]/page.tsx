@@ -7,6 +7,7 @@ import { RichText } from "./types";
 import { parseRichText } from "../../../lib/utils";
 import { renderBlock } from "@/components/notion/renderer";
 import type { Block } from "@/types/notion.d.ts";
+import BlockComponent from "@/components/notion/block";
 
 interface IParams extends ParsedUrlQuery {
   id: string;
@@ -121,7 +122,8 @@ const Post = async ({ params }: { params: IParams }) => {
         {blocks.map((block: Block, index: Key | null | undefined) => {
           return (
             <div key={index} className="mt-2">
-              {renderBlock(block)}
+              {/* {renderBlock(block)} */}
+              <BlockComponent block={block} />
             </div>
           );
         })}
