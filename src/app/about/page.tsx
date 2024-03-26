@@ -32,8 +32,8 @@ function About() {
         <div className="flex w-full flex-col gap-8">
           <p>
             Have a question or just want to chat? Feel free to{" "}
-            <Link href="jeremyxu1234@gmail.com">email me</Link>. Try finding me
-            anywhere else at @jeremyxxxuuu.
+            <Link href="mailto:jeremyxu1234@gmail.com">email me</Link>. Try
+            finding me anywhere else at @jeremyxxxuuu.
           </p>
           <ul className="animated-list grid flex-grow grid-cols-1 gap-2 md:grid-cols-2">
             {ConnectLinks.map((link) => (

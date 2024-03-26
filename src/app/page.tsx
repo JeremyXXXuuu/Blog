@@ -36,8 +36,8 @@ export default function Home() {
           style={{ "--index": 2 } as React.CSSProperties}
         >
           Good evening, I&apos;m, a programmer who loves building new things. In
-          addition to coding, I also make YouTube videos, where I focus on tech,
-          creative vlogs, and personal development.
+          addition to coding, where I focus on tech, creative vlogs, and
+          personal development.
         </p>
         <ul
           className="animated-list flex animate-in flex-col gap-2 text-muted-foreground md:flex-row md:gap-6"
@@ -45,7 +45,7 @@ export default function Home() {
         >
           <li className="transition-opacity">
             <Link
-              href="jeremyxu1234@gmail.com"
+              href="mailto:jeremyxu1234@gmail.com"
               className="flex items-center gap-2 no-underline"
             >
               <ArrowUpRightIcon className="h-5 w-5" />
@@ -54,7 +54,7 @@ export default function Home() {
           </li>
           <li className="transition-opacity">
             <Link
-              href="jeremyxu1234@gmail.com"
+              href="mailto:jeremyxu1234@gmail.com"
               className="flex items-center gap-2 no-underline"
             >
               <ArrowUpRightIcon className="h-5 w-5" />
