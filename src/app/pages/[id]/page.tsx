@@ -1,10 +1,10 @@
 import Image from "next/image";
 import Head from "next/head";
 import { ParsedUrlQuery } from "querystring";
-import { blog, blogs, getBlocks } from "../../../lib/notion";
+import { blog, blogs, getBlocks } from "@/lib/notion";
 import { Key, ReactElement } from "react";
 import { RichText } from "./types";
-import { parseRichText } from "../../../lib/utils";
+import { parseRichText } from "@/lib/utils";
 import { renderBlock } from "@/components/notion/renderer";
 import type { Block } from "@/types/notion.d.ts";
 import BlockComponent from "@/components/notion/block";

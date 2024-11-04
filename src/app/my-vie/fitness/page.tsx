@@ -3,6 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { blogs } from "@/lib/notion";
 import { Section } from "@/components/ui/section";
+import CldImage from "@/components/cloud-image";
 
 interface Props {
   blogs: [any];
@@ -15,7 +16,7 @@ interface BlogItem {
   created_date: string;
 }
 
-export default async function Blog() {
+export default async function Fitness() {
   const blogs = (await getBlogs()) as any;
   return (
     <div>
@@ -24,20 +25,49 @@ export default async function Blog() {
       </Head>
 
       <main className="m-auto ">
-        <div className="flex flex-col gap-16 md:gap-24 ">
+        <div className="flex flex-col gap-16 md:gap-12 ">
           <div className="flex flex-col gap-8">
             <div>
               <h1 className="animate-in text-3xl font-bold tracking-tight">
-                Blogs
+                Fitness
               </h1>
               <p
                 className="animate-in text-muted-foreground"
                 style={{ "--index": 1 } as React.CSSProperties}
               >
-                posts about code, design, more ...
+                All about my fit, training journey ...
               </p>
             </div>
           </div>
+          {/* Gallery Section */}
+          <section
+            className="flex flex-col gap-8 animate-in"
+            style={{ "--index": 3 } as React.CSSProperties}
+          >
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <CldImage
+                src="sample.jpg"
+                alt="Sample Imz age"
+                className="rounded-lg"
+                width="960"
+                height="600"
+              />
+              <CldImage
+                src="sample.jpg"
+                alt="Sample Imz age"
+                className="rounded-lg"
+                width="960"
+                height="600"
+              />
+              <CldImage
+                src="sample.jpg"
+                alt="Sample Imz age"
+                className="rounded-lg"
+                width="960"
+                height="600"
+              />
+            </div>
+          </section>
           <ul
             className="flex flex-col animated-list animate-in"
             style={{ "--index": 2 } as React.CSSProperties}
@@ -47,7 +77,7 @@ export default async function Blog() {
                 (blog: any) =>
                   blog.cover != null &&
                   blog.properties.Published.checkbox === true &&
-                  blog.properties.Type.select?.name === "blog" &&
+                  blog.properties.Type.select?.name === "fitness" &&
                   blog.properties.Name.rich_text[0] != null
               )
               .map((blog: any, index: number) => {
@@ -99,9 +129,7 @@ const formatDate = (date: string) =>
 async function getBlogs() {
   // Get the posts
   let { results } = await blogs();
-  results.map((blog: any) => {
-    console.log(blog.properties.Type.select?.name);
-  });
+
   // Return the blog
   return results;
 }
