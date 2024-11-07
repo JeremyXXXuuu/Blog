@@ -14,6 +14,7 @@ interface BlogItem {
   name: string;
   img: string;
   created_date: string;
+  description?: string;
 }
 
 export default async function Fitness() {
@@ -97,22 +98,32 @@ export default async function Fitness() {
 }
 
 function Post({ blogItem }: { blogItem: BlogItem }) {
-  const { name, img, created_date, slug } = blogItem;
+  const { name, img, slug, description, created_date } = blogItem;
   return (
-    <li className="py-3 group transition-opacity" key={slug}>
-      <div className="flex justify-between gap-10 items-center">
-        <Section heading={formatDate(created_date)}>
-          <Link href={`/pages/${slug}`} className="font-medium text-center">
-            {name}
+    <li className="py-3 group transition-opacity " key={slug}>
+      <div className="flex py-3 flex-col md:flex-row gap-4 md:gap-6 items-center ">
+        <div className=" flex aspect-square min-w-24 md:w-48 w-full h-32 relative drop-shadow-sm ">
+          <Link href={`/pages/${slug}`} className="font-medium leading-tight">
+            <Image
+              src={img}
+              alt={name}
+              fill
+              className="object-cover rounded-lg"
+            />
           </Link>
-        </Section>
-        <div className="md:hidden aspect-square min-w-24 w-24 h-16 relative drop-shadow-sm">
-          <Image
-            src={img}
-            alt={name}
-            fill
-            className="object-cover rounded-lg"
-          />
+        </div>
+
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-row gap-2">
+            <Link href={`/pages/${slug}`} className="font-medium leading-tight">
+              {name}
+            </Link>
+            <div className="text-sm text-gray-500">
+              {formatDate(created_date)}
+            </div>
+            {/* display date and description */}
+          </div>
+          <div className="text-sm text-gray-500">{description}</div>
         </div>
       </div>
     </li>

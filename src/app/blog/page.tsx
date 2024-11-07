@@ -99,9 +99,6 @@ const formatDate = (date: string) =>
 async function getBlogs() {
   // Get the posts
   let { results } = await blogs();
-  results.map((blog: any) => {
-    console.log(blog.properties.Type.select?.name);
-  });
   // Return the blog
   return results;
 }
