@@ -52,3 +52,91 @@ export type BlockData =
   | boolean
   | number
   | null;
+
+export type BestWeight = {
+  type: "rollup";
+  rollup: {
+    type: "number";
+    number: number | null;
+  };
+};
+
+export type ExerciseName = {
+  type: "title";
+  title: Array<{ plain_text: string }>;
+};
+
+export type ExerciseProperties = {
+  Name: ExerciseName;
+  "Best Weight": BestWeight;
+};
+
+export type FitnessLogProperties = {
+  "Date Rollup": {
+    type: "rollup";
+    formula: {
+      type: "date";
+      date: { start: string } | null;
+    };
+  };
+  "Best Weight": {
+    type: "rollup";
+    rollup: {
+      type: "number";
+      number: number | null;
+    };
+  };
+  Set: {
+    type: "number";
+    number: number | null;
+  };
+  "Muscle Group": {
+    type: "multi_select";
+    multi_select: Array<{
+      name: string;
+      color: string;
+    }>;
+  };
+  Weight: {
+    type: "number";
+    number: number | null;
+  };
+  Date: {
+    type: "date";
+    rollup: {
+      type: "array";
+      array: Array<{ date: { start: string } | null }>;
+    };
+  };
+  Done: {
+    type: "checkbox";
+    checkbox: boolean;
+  };
+  Exercise: {
+    type: "relation";
+    relation: Array<{ id: string }>;
+  };
+  Duration: {
+    type: "number";
+    number: number | null;
+  };
+  Volume: {
+    type: "formula";
+    formula: {
+      type: "number";
+      number: number | null;
+    };
+  };
+  Reps: {
+    type: "number";
+    number: number | null;
+  };
+  Workout: {
+    type: "relation";
+    relation: Array<{ id: string }>;
+  };
+  Notes: {
+    type: "title";
+    title: Array<{ plain_text: string }>;
+  };
+};
