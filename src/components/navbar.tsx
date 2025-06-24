@@ -26,7 +26,7 @@ import { useRouter } from "next/navigation";
 
 const links = [
   { label: "About", href: "/about" },
-  { label: "Blog", href: "/blog" },
+  // { label: "Blog", href: "/blog" },
   { label: "Project", href: "/project" },
 ];
 
@@ -116,7 +116,7 @@ export default function Navbar() {
                 <DropdownMenuRadioItem value="about">
                   About
                 </DropdownMenuRadioItem>
-                <DropdownMenuRadioItem value="blog">Blog</DropdownMenuRadioItem>
+                {/* <DropdownMenuRadioItem value="blog">Blog</DropdownMenuRadioItem> */}
                 <DropdownMenuRadioItem value="project">
                   Project
                 </DropdownMenuRadioItem>
